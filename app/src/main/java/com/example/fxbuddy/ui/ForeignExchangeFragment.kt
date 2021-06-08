@@ -48,7 +48,12 @@ class ForeignExchangeFragment : Fragment() {
 
         binding.spFromCurrency.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(items: AdapterView<*>?, p1: View?, selectedIndex: Int, p3: Long) {
+                override fun onItemSelected(
+                    items: AdapterView<*>?,
+                    p1: View?,
+                    selectedIndex: Int,
+                    p3: Long
+                ) {
                     fxBuddyViewModel.setFromCurrency(items?.selectedItem.toString())
                     fromSelectedIndex = selectedIndex
                 }
@@ -59,7 +64,12 @@ class ForeignExchangeFragment : Fragment() {
 
         binding.spToCurrency.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(items: AdapterView<*>?, p1: View?, selectedIndex: Int, p3: Long) {
+                override fun onItemSelected(
+                    items: AdapterView<*>?,
+                    p1: View?,
+                    selectedIndex: Int,
+                    p3: Long
+                ) {
                     fxBuddyViewModel.setToCurrency(items?.selectedItem.toString())
                     toSelectedIndex = selectedIndex
                 }
@@ -77,7 +87,7 @@ class ForeignExchangeFragment : Fragment() {
         })
 
         fxBuddyViewModel.navigate.observe(viewLifecycleOwner, EventObserver {
-            findNavController().navigate(R.id.action_foreignExchangeFragment_to_foreignExchangeHistoryFragment)
+            findNavController().navigate(ForeignExchangeFragmentDirections.actionForeignExchangeFragmentToForeignExchangeHistoryFragment())
         })
     }
 

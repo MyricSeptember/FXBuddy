@@ -44,10 +44,11 @@ class ForeignExchangeHistoryFragment : Fragment() {
             it?.let {
                 val allAvgSpeeds =
                     it.indices.map { i -> BarEntry(i.toFloat(), it[i].close.toFloat()) }
-                val bardataSet = BarDataSet(allAvgSpeeds, "Exchange Rate: 30 day.").apply {
-                    valueTextColor = Color.BLUE
-                    color = ContextCompat.getColor(requireContext(), R.color.purple_700)
-                }
+                val bardataSet =
+                    BarDataSet(allAvgSpeeds, getString(R.string.graph_description)).apply {
+                        valueTextColor = Color.BLUE
+                        color = ContextCompat.getColor(requireContext(), R.color.primaryLightColor)
+                    }
                 binding.barChart.data = BarData(bardataSet)
                 binding.barChart.invalidate()
             }
@@ -73,7 +74,7 @@ class ForeignExchangeHistoryFragment : Fragment() {
             setDrawGridLines(false)
         }
         binding.barChart.apply {
-            description.text = "Exchange Rate: 30 day."
+            description.text = getString(R.string.graph_description)
             legend.isEnabled = false
         }
     }

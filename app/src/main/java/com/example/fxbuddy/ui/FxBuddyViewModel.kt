@@ -48,10 +48,10 @@ class FxBuddyViewModel @ViewModelInject constructor(
     fun getForeignExchangeRate() {
         viewModelScope.launch(dispatchers.io) {
             val ratesData = currentDate.value?.let {
-                selectedFromCurrency.value?.let { it1 ->
-                    selectedToCurrency.value?.let { it2 ->
+                selectedFromCurrency.value?.let { selectedFromCurrency ->
+                    selectedToCurrency.value?.let { selectedToCurrency ->
                         RateData(
-                            it1, it2
+                            selectedFromCurrency, selectedToCurrency
                         )
                     }
                 }
@@ -82,11 +82,11 @@ class FxBuddyViewModel @ViewModelInject constructor(
 
     fun getForeignExchangeRateHistory() {
         viewModelScope.launch(dispatchers.io) {
-            val rateHistoryData = currentDate.value?.let {
-                futureDate.value?.let { it1 ->
+            val rateHistoryData = currentDate.value?.let { currentDate ->
+                futureDate.value?.let { futureDate ->
                     RateHistoryData(
-                        it,
-                        it1,
+                        currentDate,
+                        futureDate,
                         "daily",
                         "${selectedFromCurrency.value}${selectedToCurrency.value}",
                         "close"

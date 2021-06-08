@@ -8,6 +8,7 @@
     <string name="to_header_text">To</string>
     <string name="from_header_text">From</string>
     <string name="history_header">30 Day Graph</string>
+    <string name="graph_description">Exchange Rate: 30 day.</string>
     <string-array name="currency_codes">
         <item>AED</item>
         <item>ARS</item>
