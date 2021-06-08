@@ -33,6 +33,9 @@ class FxBuddyViewModel @ViewModelInject constructor(
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
+    private val _isCurrencyLoading = MutableLiveData<Boolean>()
+    val isCurrencyLoading: LiveData<Boolean> = _isCurrencyLoading
+
     private val _fxRate = MutableLiveData<String>()
     val fxRate: LiveData<String> = _fxRate
 
@@ -71,6 +74,7 @@ class FxBuddyViewModel @ViewModelInject constructor(
                     is Resource.Success<*> -> {
                         _isLoading.postValue(false)
                         val rates = ratesResponse.data?.price
+                        _isCurrencyLoading.postValue(true)
                         _fxRate.postValue(rates.toString())
                     }
                 }

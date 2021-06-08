@@ -19,7 +19,7 @@
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FX Buddy"
+            android:text="@string/fx_buddy_app_header"
             android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/text_size_h1"
             android:textStyle="bold"
@@ -106,39 +106,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/viewHistoryButton" />
 
+
         <Button
             android:id="@+id/rateButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_normal"
-            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginTop="112dp"
             android:onClick="@{() -> viewModel.getForeignExchangeRate() }"
             android:text="@string/rate_button_text"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvResult" />
-
-        <TextView
-            android:id="@+id/tvResult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:text="@{viewModel.selectedToCurrency}"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_h2"
-            app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
-            app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName"
-            tools:text="SD" />
+            app:layout_constraintTop_toBottomOf="@+id/floatingActionButton" />
 
         <ProgressBar
             android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="51dp"
+            android:layout_height="51dp"
             android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -146,23 +131,6 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginTop="@dimen/margin_extra_large"
-            android:layout_marginEnd="@dimen/margin_small"
-            android:ems="10"
-            android:hint="@string/amount_hint"
-            android:inputType="textPersonName"
-            android:text="@{viewModel.fxRate}"
-            android:textColor="@color/primaryColor"
-            android:textSize="@dimen/text_size_h2"
-            app:layout_constraintEnd_toStartOf="@+id/tvResult"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/floatingActionButton" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton"
@@ -178,5 +146,75 @@
             app:layout_constraintTop_toTopOf="@+id/spFromCurrency"
             app:layout_constraintVertical_bias="0.955"
             app:srcCompat="@drawable/ic_baseline_compare_arrows_24" />
+
+        <TextView
+            android:id="@+id/toCurrencyValueTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.fxRate}"
+            android:textSize="@dimen/text_size_h2"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/equalSignTextView"
+            app:layout_constraintEnd_toStartOf="@+id/toCurrencyTextView"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/equalSignTextView"
+            app:layout_constraintTop_toTopOf="@+id/equalSignTextView"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/equalSignTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/margin_large"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/ic_baseline_arrow_right_alt_24"
+            android:textSize="@dimen/text_size_h2"
+            android:textStyle="bold"
+            android:visibility="@{viewModel.isCurrencyLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toStartOf="@+id/toCurrencyValueTextView"
+            app:layout_constraintStart_toEndOf="@+id/fromCurrencyTextView"
+            app:layout_constraintTop_toBottomOf="@+id/floatingActionButton" />
+
+        <TextView
+            android:id="@+id/fromCurrencyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.selectedFromCurrency}"
+            android:textSize="@dimen/text_size_h2"
+            android:textStyle="bold"
+            android:visibility="@{viewModel.isCurrencyLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@+id/equalSignTextView"
+            app:layout_constraintEnd_toStartOf="@+id/equalSignTextView"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/fromCurrencyValueTextView"
+            app:layout_constraintTop_toTopOf="@+id/equalSignTextView" />
+
+        <TextView
+            android:id="@+id/fromCurrencyValueTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textSize="@dimen/text_size_h2"
+            android:textStyle="bold"
+            android:visibility="@{viewModel.isCurrencyLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@+id/fromCurrencyTextView"
+            app:layout_constraintEnd_toStartOf="@+id/fromCurrencyTextView"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/fromCurrencyTextView" />
+
+        <TextView
+            android:id="@+id/toCurrencyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.selectedToCurrency}"
+            android:textSize="@dimen/text_size_h2"
+            android:textStyle="bold"
+            android:visibility="@{viewModel.isCurrencyLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@+id/toCurrencyValueTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/toCurrencyValueTextView"
+            app:layout_constraintTop_toTopOf="@+id/toCurrencyValueTextView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

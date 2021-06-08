@@ -93,7 +93,6 @@ class ForeignExchangeFragment : Fragment() {
 
     private fun swapCurrencies() {
         fxBuddyViewModel.getForeignExchangeRate()
-        binding.editTextTextPersonName.text.clear()
         val tempFromPosition = fromSelectedIndex
         binding.spToCurrency.setSelection(fromSelectedIndex)
         binding.spFromCurrency.setSelection(toSelectedIndex)

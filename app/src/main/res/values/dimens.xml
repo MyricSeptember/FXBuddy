@@ -5,6 +5,7 @@
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_extra_small">4dp</dimen>
     <dimen name="margin_guide_line">30dp</dimen>
+    <dimen name="margin_large">50dp</dimen>
     <dimen name="margin_extra_large">70dp</dimen>
 
 
