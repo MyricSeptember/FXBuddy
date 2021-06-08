@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nag_graph"
+    app:startDestination="@id/foreignExchangeFragment">
+
+    <fragment
+        android:id="@+id/foreignExchangeFragment"
+        android:name="com.plcoding.currencyconverter.ui.ForeignExchangeFragment"
+        android:label="ForeignExchangeFragment"
+        tools:layout="@layout/fragment_foreign_exchange">
+        <action
+            android:id="@+id/action_foreignExchangeFragment_to_foreignExchangeHistoryFragment"
+            app:destination="@id/foreignExchangeHistoryFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/foreignExchangeHistoryFragment"
+        android:name="com.plcoding.currencyconverter.ui.ForeignExchangeHistoryFragment"
+        android:label="ForeignExchangeHistoryFragment"
+        tools:layout="@layout/fragment_foreign_exchange_rate_history" />
+</navigation>

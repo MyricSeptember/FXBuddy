@@ -1,3 +1,56 @@
 <resources>
-    <string name="app_name">FXBuddy</string>
+    <string name="app_name">CurrencyConverter</string>
+    <string name="view_history_button_text">View History</string>
+    <string name="view_history_description">NB: At least one selected currency must be USD to view history.</string>
+    <string name="rate_button_text">Get Rate</string>
+    <string name="amount_hint">Amount</string>
+    <string name="floating_action_button_description">Change</string>
+    <string name="to_header_text">To</string>
+    <string name="from_header_text">From</string>
+    <string name="history_header">30 Day Graph</string>
+    <string-array name="currency_codes">
+        <item>AED</item>
+        <item>ARS</item>
+        <item>AUD</item>
+        <item>BRL</item>
+        <item>BTC</item>
+        <item>CAD</item>
+        <item>CHF</item>
+        <item>CLP</item>
+        <item>CNY</item>
+        <item>COP</item>
+        <item>CZK</item>
+        <item>DKK</item>
+        <item>EUR</item>
+        <item>GBP</item>
+        <item>HKD</item>
+        <item>HRK</item>
+        <item>HUF</item>
+        <item>IDR</item>
+        <item>ILS</item>
+        <item>INR</item>
+        <item>ISK</item>
+        <item>JPY</item>
+        <item>KRW</item>
+        <item>KWD</item>
+        <item>MAD</item>
+        <item>MXN</item>
+        <item>MYR</item>
+        <item>NOK</item>
+        <item>NZD</item>
+        <item>PEN</item>
+        <item>PHP</item>
+        <item>PLN</item>
+        <item>RON</item>
+        <item>RUB</item>
+        <item>SEK</item>
+        <item>SGD</item>
+        <item>THB</item>
+        <item>TRY</item>
+        <item>TWD</item>
+        <item>USD</item>
+        <item>XAG</item>
+        <item>XAU</item>
+        <item>ZAR</item>
+    </string-array>
 </resources>
