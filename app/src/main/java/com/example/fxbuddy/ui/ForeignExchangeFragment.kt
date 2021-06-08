@@ -48,9 +48,9 @@ class ForeignExchangeFragment : Fragment() {
 
         binding.spFromCurrency.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    fxBuddyViewModel.setFromCurrency(p0?.selectedItem.toString())
-                    fromSelectedIndex = p2
+                override fun onItemSelected(items: AdapterView<*>?, p1: View?, selectedIndex: Int, p3: Long) {
+                    fxBuddyViewModel.setFromCurrency(items?.selectedItem.toString())
+                    fromSelectedIndex = selectedIndex
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -59,9 +59,9 @@ class ForeignExchangeFragment : Fragment() {
 
         binding.spToCurrency.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    fxBuddyViewModel.setToCurrency(p0?.selectedItem.toString())
-                    toSelectedIndex = p2
+                override fun onItemSelected(items: AdapterView<*>?, p1: View?, selectedIndex: Int, p3: Long) {
+                    fxBuddyViewModel.setToCurrency(items?.selectedItem.toString())
+                    toSelectedIndex = selectedIndex
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -92,6 +92,7 @@ class ForeignExchangeFragment : Fragment() {
     }
 
     private fun getPastDate(): String {
+        //This can be moved to a "DateUtil" class
         var numberOfDays: Long = 30
         val date = LocalDate.now()
         var pastDate: LocalDate = date
