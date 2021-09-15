@@ -43,19 +43,17 @@ class ForeignExchangeHistoryFragment : Fragment() {
     private fun subscribeToObservers() {
         fxBuddyViewModel.allRates.observe(viewLifecycleOwner, Observer {
             it?.let {
-                var counter = 1
                 val allRates =
                     it.indices.map { i ->
-                        counter++
                         BarEntry(i.toFloat(), it[i].close.toFloat())
 
                     }
-                val bardataSet =
+                val barDataSet =
                     BarDataSet(allRates, getString(R.string.graph_description)).apply {
                         valueTextColor = Color.BLUE
                         color = ContextCompat.getColor(requireContext(), R.color.primaryLightColor)
                     }
-                val data = BarData(bardataSet)
+                val data = BarData(barDataSet)
                 data.barWidth = 0.6f
                 binding.barChart.data = data
 
