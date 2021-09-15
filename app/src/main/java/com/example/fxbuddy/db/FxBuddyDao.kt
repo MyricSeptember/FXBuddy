@@ -10,15 +10,15 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface FxBuddyDao {
-    @Query("SELECT * FROM fx_table ORDER BY date")
+    @Query("SELECT * FROM history ORDER BY date")
     fun getAllRates(): Flow<List<DatabaseRate>>
 
-    @Query("SELECT * FROM fx_table WHERE date = :date")
+    @Query("SELECT * FROM history WHERE date = :date")
     fun getPlant(date: String): LiveData<DatabaseRate>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(plants: List<DatabaseRate>)
 
-    @Query("delete from fx_table")
+    @Query("delete from history")
     fun deleteAll()
 }

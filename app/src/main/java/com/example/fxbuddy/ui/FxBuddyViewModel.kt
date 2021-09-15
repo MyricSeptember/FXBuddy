@@ -1,6 +1,5 @@
 package com.example.fxbuddy.ui
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.example.fxbuddy.db.model.DatabaseRate
 import com.example.fxbuddy.domain.RateData
@@ -10,9 +9,12 @@ import com.example.fxbuddy.util.DispatcherProvider
 import com.example.fxbuddy.util.Event
 import com.example.fxbuddy.util.NetworkUtils
 import com.example.fxbuddy.util.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class FxBuddyViewModel @ViewModelInject constructor(
+@HiltViewModel
+class FxBuddyViewModel @Inject constructor(
     private val repository: FxBuddyRepository,
     private val dispatchers: DispatcherProvider,
     private val networkConnection: NetworkUtils
@@ -39,8 +41,8 @@ class FxBuddyViewModel @ViewModelInject constructor(
     private val _fxRate = MutableLiveData<String>()
     val fxRate: LiveData<String> = _fxRate
 
-    private val _totalAvgSpeed = repository.getAllRates()
-    val totalAvgSpeed: LiveData<List<DatabaseRate>> = _totalAvgSpeed.asLiveData()
+    private val _allRates = repository.getAllRates()
+    val allRates: LiveData<List<DatabaseRate>> = _allRates.asLiveData()
 
     private val _showMessage = MutableLiveData<Event<String>>()
     val showMessage: LiveData<Event<String>> = _showMessage

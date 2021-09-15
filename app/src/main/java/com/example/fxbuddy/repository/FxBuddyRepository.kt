@@ -39,7 +39,13 @@ class FxBuddyRepository @Inject constructor(
             if (response.isSuccessful && result != null) {
                 for (key in result.price.keys) {
                     result.price[key]?.values?.first()?.let {
-                        val intoItem = DatabaseRate(key, it.close, it.high, it.low, it.open)
+                        val intoItem = DatabaseRate(
+                            date = key,
+                            close = it.close,
+                            high = it.high,
+                            low = it.low,
+                            open = it.open
+                        )
                         list.add(intoItem)
                     }
                 }

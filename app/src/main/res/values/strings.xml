@@ -10,6 +10,7 @@
     <string name="history_header">30 Day Graph</string>
     <string name="graph_description">Exchange Rate: 30 day.</string>
     <string name="fx_buddy_app_header">FX Buddy</string>
+    <string name="fx_buddy_scroll_description">Scroll the bar chart the to left or right to get a full view.</string>
     <string-array name="currency_codes">
         <item>AED</item>
         <item>ARS</item>

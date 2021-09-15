@@ -34,28 +34,42 @@ class ForeignExchangeHistoryFragment : Fragment() {
                 lifecycleOwner = viewLifecycleOwner
                 viewModel = fxBuddyViewModel
             }
-        subscribeToObservers()
         setupBarChart()
+        subscribeToObservers()
+
         return binding.root
     }
 
     private fun subscribeToObservers() {
-        fxBuddyViewModel.totalAvgSpeed.observe(viewLifecycleOwner, Observer {
+        fxBuddyViewModel.allRates.observe(viewLifecycleOwner, Observer {
             it?.let {
-                val allAvgSpeeds =
-                    it.indices.map { i -> BarEntry(i.toFloat(), it[i].close.toFloat()) }
+                var counter = 1
+                val allRates =
+                    it.indices.map { i ->
+                        counter++
+                        BarEntry(i.toFloat(), it[i].close.toFloat())
+
+                    }
                 val bardataSet =
-                    BarDataSet(allAvgSpeeds, getString(R.string.graph_description)).apply {
+                    BarDataSet(allRates, getString(R.string.graph_description)).apply {
                         valueTextColor = Color.BLUE
                         color = ContextCompat.getColor(requireContext(), R.color.primaryLightColor)
                     }
-                binding.barChart.data = BarData(bardataSet)
+                val data = BarData(bardataSet)
+                data.barWidth = 0.6f
+                binding.barChart.data = data
+
+                setupBarChart()
+
+                binding.barChart.notifyDataSetChanged()
                 binding.barChart.invalidate()
             }
         })
     }
 
     private fun setupBarChart() {
+        binding.barChart.setVisibleXRangeMaximum(8f)//mine
+        binding.barChart.extraBottomOffset = 16f
         binding.barChart.xAxis.apply {
             position = XAxis.XAxisPosition.BOTTOM
             setDrawLabels(false)
@@ -63,6 +77,7 @@ class ForeignExchangeHistoryFragment : Fragment() {
             textColor = Color.BLUE
             setDrawGridLines(false)
         }
+
         binding.barChart.axisLeft.apply {
             axisLineColor = Color.BLUE
             textColor = Color.BLUE
